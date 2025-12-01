@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔒 Secure Messenger - Privacy First</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Login Screen -->
+        <div id="login-screen" class="screen active">
+            <div class="login-box">
+                <h1>🔒 Secure Messenger</h1>
+                <p class="tagline">End-to-End Encrypted • Anonymous • Private</p>
+                <input type="text" id="username" placeholder="अपना नाम डालें (Anonymous)" maxlength="20">
+                <button onclick="login()" class="btn-primary">Start Secure Chat</button>
+                <div class="privacy-info">
+                    <p>✓ No phone number required</p>
+                    <p>✓ Messages encrypted on your device</p>
+                    <p>✓ Self-destructing messages</p>
+                    <p>✓ No data stored on server</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat Screen -->
+        <div id="chat-screen" class="screen">
+            <div class="chat-header">
+                <div class="header-left">
+                    <h2>🔒 Secure Chat</h2>
+                    <span id="room-info" class="room-info"></span>
+                </div>
+                <div class="header-right">
+                    <span id="user-name" class="user-badge"></span>
+                    <button onclick="logout()" class="btn-logout">Logout</button>
+                </div>
+            </div>
+
+            <div class="chat-container">
+                <div class="sidebar">
+                    <h3>Create/Join Room</h3>
+                    <input type="text" id="room-id" placeholder="Room ID डालें">
+                    <button onclick="createRoom()" class="btn-secondary">Create Room</button>
+                    <button onclick="joinRoom()" class="btn-secondary">Join Room</button>
+                    <div class="online-users">
+                        <h4>Online Users</h4>
+                        <div id="users-list"></div>
+                    </div>
+                </div>
+
+                <div class="chat-main">
+                    <div id="messages" class="messages"></div>
+                    <div class="input-area">
+                        <input type="text" id="message-input" placeholder="Type encrypted message..." disabled>
+                        <label class="self-destruct-toggle">
+                            <input type="checkbox" id="self-destruct">
+                            <span>🔥 Self-Destruct (5s)</span>
+                        </label>
+                        <button onclick="sendMessage()" id="send-btn" class="btn-send" disabled>Send 🔒</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
